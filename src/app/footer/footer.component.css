@@ -1,0 +1,50 @@
+footer {
+    max-width: 100%;
+    width: 100vw;
+    padding: 0;
+    background-image: radial-gradient(at 30% top, #031d33 0%, rgba(3,37,75) 70%);
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-between;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.navFooter {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    color: #fff;
+}
+
+.footerImgDiv {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+footer nav div {
+    margin-right: 40px;
+    min-width: 0;
+}
+
+footer nav a {
+    position: relative;
+    top: 140px;
+    border-color: #fff;
+    background-color: #fff;
+    color: rgba(var(--tmdbLightBlue), 1);
+    font-size: 1.3em;
+    display: inline-block;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+footer li:hover, footer button:hover{
+    cursor: pointer;
+}
