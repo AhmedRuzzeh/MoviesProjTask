@@ -28,12 +28,18 @@ footer {
     flex-direction: column;
 }
 
-footer nav div {
-    margin-right: 40px;
+.navFooter div {
+    margin-right: 30px;
     min-width: 0;
 }
 
-footer nav a {
+.navFooter ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.navFooter a {
     position: relative;
     top: 140px;
     border-color: #fff;
@@ -45,6 +51,6 @@ footer nav a {
     white-space: normal;
 }
 
-footer li:hover, footer button:hover{
+.navFooter li:hover, .navFooter button:hover{
     cursor: pointer;
 }

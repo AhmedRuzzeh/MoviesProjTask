@@ -2,13 +2,13 @@
 
 * {
   box-sizing: border-box;
-  font-size: 1.05rem;
-  font-family: Georgia, Times, 'Times New Roman', serif;
+  font-size: 1rem;
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 body {
   margin: 0;
-  font-family: 'Quicksand', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
