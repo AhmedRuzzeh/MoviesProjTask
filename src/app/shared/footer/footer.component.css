@@ -26,6 +26,22 @@ footer {
     position: relative;
     display: flex;
     flex-direction: column;
+    width: 13rem;
+}
+
+.footerImgDiv img {
+    width: 80%;
+    height: auto;
+    align-self: flex-end;
+}
+
+.footerImgDiv button {
+    margin-top: 1.5rem;
+    padding: 0.5rem 0.3rem;
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    color: rgb(68, 161, 197);
 }
 
 .navFooter div {

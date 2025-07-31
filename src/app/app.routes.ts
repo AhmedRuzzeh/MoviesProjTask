@@ -1,10 +1,26 @@
 import { Routes } from '@angular/router'
 
-import { BodyComponent } from './components/body/body.component'
+import { HomeComponent } from './components/home/home.component'
+import { MoviesComponent } from './components/movies/movies.component'
+import { TVShowsComponent } from './components/tvshows/tvshows.component'
 
-export const routes: Routes = [
+const routeConfig: Routes = [
     {
-        path: 'Home',
-        component: BodyComponent,
+        path: '',
+        component: HomeComponent,
+        title: 'TMDB Home Page',
+    },
+    {
+        path: 'movies',
+        component: MoviesComponent,
+        title: 'TMDB Movies Page',
     }
-]
+    ,
+    {
+        path: 'tvshows',
+        component: TVShowsComponent,
+        title: 'TMDB TV Shows Page',
+    }
+];
+
+export default routeConfig;

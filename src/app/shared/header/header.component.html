@@ -1,10 +1,8 @@
 <header>
     <div class="headerDiv">
-        <span class="logo">
-            <img src="" alt="TMDB"/>
-        </span>
-        <Button>Movies</Button>
-        <Button>TV Show</Button> 
+        <img src="/logo.png" alt="TMDB" class="logo" routerLink="/"/>
+        <Button routerLink="/movies">Movies</Button>
+        <Button routerLink="/tvshows">TV Shows</Button> 
         <Button>People</Button> 
         <Button>More</Button>  
     </div>
@@ -12,6 +10,6 @@
         <Button class="languageBtn">EN</Button> 
         <Button>Login</Button> 
         <Button>Join TMDB</Button> 
-        <Button>O</Button> <!-- im not sure -->
+        <Button><i class="fas fa-search"></i></Button>
     </div>
 </header>
