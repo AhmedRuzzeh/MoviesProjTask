@@ -1,65 +1,59 @@
-<div class="filterBar">
-
-  <div class="sort"> <!-- Sort Section -->
-    <div class="topSort">
-      <h2>Sort</h2>
-      <span class="arrowClosed">></span><!-- class="arrowOpen" -->
-    </div>
-
-    <div class="bottomSort">
-      <h3 for="sort">Sort Results By:</h3>
-      <select id="sort" name="sort">
-        <option value="popAsc">Popularity Ascending</option>
-        <option value="popDesc">Popularity Descending</option>
-      </select>
-    </div>
+<div class="card"> <!-- Sort Section -->
+  <div class="topCard">
+    <h2>Sort</h2>
+    <span class="arrowClosed"></span><!-- class="arrowOpen" -->
   </div>
 
-  <div class="filter"> <!-- Filter Section -->
+  <div class="filter">
+    <h3 for="sort">Sort Results By:</h3>
+    <select id="sort" name="sort">
+      <option value="popAsc">Popularity Ascending</option>
+      <option value="popDesc">Popularity Descending</option>
+    </select>
+  </div>
+</div>
 
-    <div class="topFilter">
-      <h2>Filter</h2>
-      <span class="arrowClosed">></span><!-- class="arrowOpen" -->
-    </div>
+<div class="card"> <!-- Filter Section -->
 
-    <div class="bottomFilter">
-      <div class="genre"> <!-- Genre Section -->
-        <h3>Genres:</h3>
-        <ul>
-          <li><a>Action</a></li>
-          <li><a>Adventure</a></li>
-          <li><a>Animation</a></li>
-          <li><a>Comedy</a></li>
-          <li><a>Crime</a></li>
-          <li><a>Documentary</a></li>
-          <li><a>Drama</a></li>
-          <li><a>Family</a></li>
-          <li><a>Fantasy</a></li>
-          <li><a>Horror</a></li>
-        </ul>
-      </div>
-
-      <div class="releaseDates"> <!-- Release Dates Section -->
-        <div class="rdatesTop">
-          <h3>Release Dates:</h3>
-        </div>
-        <div class="rdatesBottom">
-          <div class="yearCol">
-            <span>From:</span>
-            <input type="date" id="fromDate" name="fromDate" />
-          </div>
-          <div class="yearCol">
-            <span>To:</span>
-            <input type="date" id="toDate" name="toDate" />
-          </div>
-        </div>
-      </div>
-
-    </div>
+  <div class="topCard">
+    <h2>Filter</h2>
+    <span class="arrowClosed"></span><!-- class="arrowOpen" -->
   </div>
   
-  <div class="search">  <!-- Search Section -->
-    <button class="searchButton">Search</button>
+
+  <div class="filter"> <!-- Release Dates Section -->
+    <div class="rdatesTop">
+      <h3>Release Dates:</h3>
+    </div>
+    <div class="rdatesBottom">
+      <div class="yearCol">
+        <span class="label">from:</span>
+        <span class="input"><input type="date" id="fromDate" name="fromDate" /></span>
+      </div>
+      <div class="yearCol">
+        <span class="label">to:</span>
+        <span class="input"><input type="date" id="toDate" name="toDate" /></span>
+      </div>
+    </div>
   </div>
 
+  <div class="filter"> <!-- Genre Section -->
+    <h3>Genres:</h3>
+    <ul>
+      <li><a>Action</a></li>
+      <li><a>Adventure</a></li>
+      <li><a>Animation</a></li>
+      <li><a>Comedy</a></li>
+      <li><a>Crime</a></li>
+      <li><a>Documentary</a></li>
+      <li><a>Drama</a></li>
+      <li><a>Family</a></li>
+      <li><a>Fantasy</a></li>
+      <li><a>Horror</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="search">  <!-- Search Section -->
+  <button class="searchButton">Search</button>
 </div>
