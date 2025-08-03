@@ -1,27 +1,44 @@
-import { Component, inject } from '@angular/core';
-import { MovieService } from '../../services/movie.service';
+import { Component, OnInit  } from '@angular/core';
+import { MoviesService } from '../../services/movies.service';
 import { FilterbarComponent } from '../../shared/filterbar/filterbar.component';
 import { CardsComponent } from '../../shared/cards/cards.component';
+import { Movie, MovieResponse } from '../models/movies.interface';
 
 @Component({
   selector: 'app-movies',
   standalone: true,
-  imports: [FilterbarComponent, CardsComponent],
+  imports: [FilterbarComponent, CardsComponent, ],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.css'
 })
-export class MoviesComponent {
+export class MoviesComponent implements OnInit {
+  loading = false;
+  currentPage= 1;
+  movies: Movie[]=[]; 
+  totalItems= 0;
 
-constructor(private movie_service:MovieService) {}
+  constructor(private moviesService: MoviesService) {}
 
-  ngOnInit() {
-    this.movie_service.getPopularMovies().subscribe({
-      next: (data) => console.log('TMDB Response:>>>>>', data),
-      error: (err) => console.error('TMDB Error:', err)
-    });
+  ngOnInit(): void {
+    this.loadMovie();
+    throw new Error('Method not implemented.');
   }
 
-  onfilterChange(event: any) {
-    console.log('Filter changed:', event);
+  loadMovie(): void {
+    this.loading = true;
+    const pageNumber = this.currentPage + 1;
+
+    this.moviesService.getMovies(pageNumber).subscribe({
+      next : (response) => {
+        this.movies = response.results;
+        this.totalItems = response.total_results;
+        this.loading = false;
+      },
+      error : (error) => {
+        console.error('Error loading movies', error);
+        this.loading = false;
+      },
+    })
   }
+
 }

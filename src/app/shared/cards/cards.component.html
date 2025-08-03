@@ -1,9 +1,10 @@
 <div class="movies-list">
     <div class="movies">
-        <div class="card">
+
+        <div class="card"  *ngFor="let movie of movies">
             <div class="image">
                 <div>
-                    <a><img src="/favicon-1.png"/></a>
+                    <a><img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}" /></a>
                 </div>
                 <div class="options">
                     <a>
@@ -13,113 +14,10 @@
             </div>
 
             <div class="content">
-                <h2>War of the Worlds</h2>
-                <p>Jul 29, 2025</p>
+                <h2>{{ movie.title }}</h2>
+                <p>{{ movie.release_date }}</p>
             </div>
         </div>
-        <div class="card">
-            <div class="image">
-                <div>
-                    <a><img src="/favicon-1.png"/></a>
-                </div>
-                <div class="options">
-                    <a>
-                        <div class="opt-circle"></div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h2>War of the Worlds</h2>
-                <p>Jul 29, 2025</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="image">
-                <div>
-                    <a><img src="/favicon-1.png"/></a>
-                </div>
-                <div class="options">
-                    <a>
-                        <div class="opt-circle"></div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h2>War of the Worlds</h2>
-                <p>Jul 29, 2025</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="image">
-                <div>
-                    <a><img src="/favicon-1.png"/></a>
-                </div>
-                <div class="options">
-                    <a>
-                        <div class="opt-circle"></div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h2>War of the Worlds</h2>
-                <p>Jul 29, 2025</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="image">
-                <div>
-                    <a><img src="/favicon-1.png"/></a>
-                </div>
-                <div class="options">
-                    <a>
-                        <div class="opt-circle"></div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h2>War of the Worlds</h2>
-                <p>Jul 29, 2025</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="image">
-                <div>
-                    <a><img src="/favicon-1.png"/></a>
-                </div>
-                <div class="options">
-                    <a>
-                        <div class="opt-circle"></div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h2>War of the Worlds</h2>
-                <p>Jul 29, 2025</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="image">
-                <div>
-                    <a><img src="/favicon-1.png"/></a>
-                </div>
-                <div class="options">
-                    <a>
-                        <div class="opt-circle"></div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="content">
-                <h2>War of the Worlds</h2>
-                <p>Jul 29, 2025</p>
-            </div>
-        </div>
-        
         
     </div>
 
