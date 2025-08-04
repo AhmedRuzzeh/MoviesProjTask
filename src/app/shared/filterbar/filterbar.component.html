@@ -44,11 +44,15 @@
   <div class="filter"> <!-- Genre Section -->
     <h3>Genres:</h3>
     <ul>
-      <li *ngFor="let genre of genres"><a>{{genre.name}}</a></li>
+      <li *ngFor="let genre of genres" [class.active]="selectedGenres.includes(genre.id)">
+        <a (click)="toggleGenre(genre.id)">
+          {{ genre.name }}
+        </a>
+      </li>
     </ul>
   </div>
 </div>
 
 <div class="search">  <!-- Search Section -->
-  <button class="searchButton">Search</button>
+  <button class="searchButton" (click)="onSearchClick()" [class.active]="searchReady">Search</button>
 </div>

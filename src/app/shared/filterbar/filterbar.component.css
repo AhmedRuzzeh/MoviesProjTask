@@ -115,13 +115,16 @@ span.arrowClosed {
     padding: 4px 12px;
     margin-right: 6px;
     margin-top: 8px;
-    cursor: pointer;
 }
 
 .filter li:hover {
     background-color: rgb(37, 156, 195);
     color: white;
     border: none;
+}
+
+.filter li a {
+    cursor: pointer;
 }
 /* ---------------------------------------------- */
 
@@ -154,5 +157,5 @@ span.arrowClosed {
 
 .active {
     background-color: rgb(37, 156, 195);
-    color: white;
+    color: white !important;
 }

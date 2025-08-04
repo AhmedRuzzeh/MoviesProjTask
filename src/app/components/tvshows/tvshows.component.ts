@@ -14,12 +14,14 @@ import { CardsComponent } from '../../shared/cards/cards.component';
   templateUrl: './tvshows.component.html',
   styleUrl: './tvshows.component.css'
 })
-export class TVShowsComponent implements OnInit, OnDestroy { 
+export class TVShowsComponent implements OnInit, OnDestroy {
+
   loading = false;
-  currentPage = 1;
+  currentPage = 0;
   sortBy: string = 'popularity.desc';
   tvshows: Data[] = []; 
   genres: object[] = [];
+  selectedGenres: number[] = [];
   totalItems = 0;
 
   private searchSub!: Subscription; 
@@ -38,10 +40,12 @@ export class TVShowsComponent implements OnInit, OnDestroy {
     this.getGenres();
   }
 
-  onSortChange(sortValue: string): void {
-    this.sortBy = sortValue;
+  onSearch(filters: { sortBy: string; genreIds: number[] }): void {
+    this.sortBy = filters.sortBy;
+    this.selectedGenres = filters.genreIds;
+
     this.tvshows = [];
-    this.currentPage = 1;
+    this.currentPage = 0;
     this.loadTVShow();
   }
 
@@ -50,7 +54,7 @@ export class TVShowsComponent implements OnInit, OnDestroy {
     this.currentPage++;
     const pageNumber = this.currentPage;
 
-    this.tvShowsService.getTVShows(pageNumber, this.sortBy).subscribe({
+    this.tvShowsService.getTVShows(pageNumber, this.sortBy, this.selectedGenres).subscribe({
       next: (response) => {
         this.tvshows = [...this.tvshows, ...response.results];
         this.totalItems = response.total_results;

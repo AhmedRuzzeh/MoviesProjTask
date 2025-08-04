@@ -17,14 +17,22 @@ export class MoviesService {
 
   constructor(private http: HttpClient) {}
 
-  getMovies(page: number = 1, sortBy: string = 'vote_count.desc'): Observable<any> {
+  getMovies(page: number = 1, sortBy: string = 'popularity.desc', genres: number[] = []): Observable<any> {
+    const params: any = {
+      language: 'en-US',
+      page: page.toString(),
+      sort_by: sortBy,
+    };
+
+    if (genres.length > 0) {
+      params.with_genres = genres.join(',');
+    }
+
+    console.log('Sending params:', params);
+
     return this.http.get<any>(`${this.apiUrl}/discover/movie`, {
       ...this.authHeaders,
-      params: {
-        language: 'en-US',
-        page: page.toString(),
-        sort_by: sortBy,
-      },
+      params,
     });
   }
 

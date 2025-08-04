@@ -1,7 +1,7 @@
 <div class="content-wrapper">
   <div class="title"><h2>TV Shows</h2></div>
   <div class="content">
-    <app-filterbar [genres]="genres" (sortChanged)="onSortChange($event)"/>
+    <app-filterbar [genres]="genres" (searchTriggered)="onSearch($event)"/>
     <app-cards [data]="tvshows" [isMovie]="false" (loadMore)="loadTVShow()"/>
   </div>
 </div>

@@ -17,10 +17,11 @@ import { CardsComponent } from '../../shared/cards/cards.component';
 export class MoviesComponent implements OnInit, OnDestroy {
 
   loading = false;
-  currentPage = 1;
+  currentPage = 0;
   sortBy: string = 'popularity.desc';
   movies: Data[] = [];
   genres: object[] = [];
+  selectedGenres: number[] = [];
   totalItems = 0;
 
   private searchSub!: Subscription;
@@ -39,11 +40,14 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.getGenres();
   }
 
+  onSearch(filters: { sortBy: string; genreIds: number[] }): void {
+    console.log('Received from filterbar:', filters);
 
-  onSortChange(sortValue: string): void {
-    this.sortBy = sortValue;
+    this.sortBy = filters.sortBy;
+    this.selectedGenres = filters.genreIds;
+
     this.movies = [];
-    this.currentPage = 1;
+    this.currentPage = 0;
     this.loadMovie();
   }
 
@@ -52,7 +56,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.currentPage++;
     const pageNumber = this.currentPage;
 
-    this.moviesService.getMovies(pageNumber, this.sortBy).subscribe({
+    this.moviesService.getMovies(this.currentPage, this.sortBy, this.selectedGenres).subscribe({
       next: (response) => {
         this.movies = [...this.movies, ...response.results];
         this.totalItems = response.total_results;
@@ -77,7 +81,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
   }
 
   searchMovies(query: string): void {
-    
     this.loading = true;
 
     this.searchService.getSearch(1, 'movie', query).subscribe({
