@@ -1,15 +1,33 @@
 <header>
-    <div class="headerDiv">
-        <img src="/logo.png" alt="TMDB" class="logo" routerLink="/"/>
-        <Button routerLink="/movies">Movies</Button>
-        <Button routerLink="/tvshows">TV Shows</Button> 
-        <Button>People</Button> 
-        <Button>More</Button>  
+  <div class="headerDiv">
+    <img src="/logo.png" alt="TMDB" class="logo" routerLink="/" />
+    <button routerLink="/movies">Movies</button>
+    <button routerLink="/tvshows">TV Shows</button>
+    <button>People</button>
+    <button>More</button>
+  </div>
+
+  <div class="headerDiv">
+    <button class="languageBtn">EN</button>
+    <button>Login</button>
+    <button>Join TMDB</button>
+    <button (click)="onSearchBarClick()">
+      <i
+        [ngClass]="isSearchBarVisible ? 'fa-solid fa-xmark' : 'fas fa-search'"
+      ></i>
+    </button>
+  </div>
+
+  <div class="searchDiv" [ngClass]="{ hidden: !isSearchBarVisible }">
+    <div>
+        <div>
+            <span>
+              <i class="fas fa-search"></i>
+              <input type="text" id="searchInput" [(ngModel)]="searchQuery" (keyup)="onSearchInputKey($event)"
+                placeholder="Search for a movie, TV show, person..."
+              />
+            </span>
+        </div>
     </div>
-    <div class="headerDiv">
-        <Button class="languageBtn">EN</Button> 
-        <Button>Login</Button> 
-        <Button>Join TMDB</Button> 
-        <Button><i class="fas fa-search"></i></Button>
-    </div>
+  </div>
 </header>

@@ -12,5 +12,6 @@ import { CommonModule } from '@angular/common';
 export class CardsComponent {
   @Input() data: Data[] = [];
   @Input() isMovie!: boolean;
+
   @Output() loadMore = new EventEmitter<void>();
 }

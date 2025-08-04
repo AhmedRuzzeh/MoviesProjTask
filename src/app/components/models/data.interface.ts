@@ -1,8 +1,8 @@
 export interface Data {
     id: number;
     title: string;
-    poster_path: string;
     release_date: string;
+    poster_path: string;
     
     name: string; // For TV shows
     first_air_date: string; // For TV shows

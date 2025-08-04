@@ -27,13 +27,7 @@ export class TVShowsService {
     });
   }
 
-  searchTVShows(query: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/search/tv`, {
-      ...this.authHeaders,
-      params: {
-        query,
-        language: 'en-US',
-      },
-    });
+  getGenres(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/genre/tv/list`, this.authHeaders);
   }
 }

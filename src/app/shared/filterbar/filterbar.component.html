@@ -40,16 +40,7 @@
   <div class="filter"> <!-- Genre Section -->
     <h3>Genres:</h3>
     <ul>
-      <li><a>Action</a></li>
-      <li><a>Adventure</a></li>
-      <li><a>Animation</a></li>
-      <li><a>Comedy</a></li>
-      <li><a>Crime</a></li>
-      <li><a>Documentary</a></li>
-      <li><a>Drama</a></li>
-      <li><a>Family</a></li>
-      <li><a>Fantasy</a></li>
-      <li><a>Horror</a></li>
+      <li *ngFor="let genre of genres"><a>{{genre.name}}</a></li>
     </ul>
   </div>
 </div>
