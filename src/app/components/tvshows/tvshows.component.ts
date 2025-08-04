@@ -17,6 +17,7 @@ import { CardsComponent } from '../../shared/cards/cards.component';
 export class TVShowsComponent implements OnInit, OnDestroy { 
   loading = false;
   currentPage = 1;
+  sortBy: string = 'popularity.desc';
   tvshows: Data[] = []; 
   genres: object[] = [];
   totalItems = 0;
@@ -37,12 +38,19 @@ export class TVShowsComponent implements OnInit, OnDestroy {
     this.getGenres();
   }
 
+  onSortChange(sortValue: string): void {
+    this.sortBy = sortValue;
+    this.tvshows = [];
+    this.currentPage = 1;
+    this.loadTVShow();
+  }
+
   loadTVShow(): void {
     this.loading = true;
     this.currentPage++;
     const pageNumber = this.currentPage;
 
-    this.tvShowsService.getTVShows(pageNumber).subscribe({
+    this.tvShowsService.getTVShows(pageNumber, this.sortBy).subscribe({
       next: (response) => {
         this.tvshows = [...this.tvshows, ...response.results];
         this.totalItems = response.total_results;

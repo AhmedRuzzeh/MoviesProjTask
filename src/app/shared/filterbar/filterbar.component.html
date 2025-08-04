@@ -6,9 +6,13 @@
 
   <div class="filter">
     <h3 for="sort">Sort Results By:</h3>
-    <select id="sort" name="sort">
-      <option value="popAsc">Popularity Ascending</option>
-      <option value="popDesc">Popularity Descending</option>
+    <select id="sort" name="sort" (change)="onSortChange($event)">
+      <option value="popularity.desc selected">Popularity Descending</option>
+      <option value="popularity.asc">Popularity Ascending</option>
+      <option value="vote_count.desc">Vote Count Descending</option>
+      <option value="vote_count.asc">Vote Count Ascending</option> 
+      <option value="vote_average.desc">Vote Average Descending</option> 
+      <option value="vote_average.asc">Vote Average Ascending</option> 
     </select>
   </div>
 </div>

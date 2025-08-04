@@ -18,6 +18,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   loading = false;
   currentPage = 1;
+  sortBy: string = 'popularity.desc';
   movies: Data[] = [];
   genres: object[] = [];
   totalItems = 0;
@@ -38,12 +39,20 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.getGenres();
   }
 
+
+  onSortChange(sortValue: string): void {
+    this.sortBy = sortValue;
+    this.movies = [];
+    this.currentPage = 1;
+    this.loadMovie();
+  }
+
   loadMovie(): void {
     this.loading = true;
     this.currentPage++;
     const pageNumber = this.currentPage;
 
-    this.moviesService.getMovies(pageNumber).subscribe({
+    this.moviesService.getMovies(pageNumber, this.sortBy).subscribe({
       next: (response) => {
         this.movies = [...this.movies, ...response.results];
         this.totalItems = response.total_results;

@@ -17,12 +17,13 @@ export class MoviesService {
 
   constructor(private http: HttpClient) {}
 
-  getMovies(page: number = 1): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/movie/top_rated`, {
+  getMovies(page: number = 1, sortBy: string = 'vote_count.desc'): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/discover/movie`, {
       ...this.authHeaders,
       params: {
         language: 'en-US',
         page: page.toString(),
+        sort_by: sortBy,
       },
     });
   }

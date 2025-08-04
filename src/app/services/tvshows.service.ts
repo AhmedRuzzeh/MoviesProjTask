@@ -17,12 +17,13 @@ export class TVShowsService {
 
   constructor(private http: HttpClient) {}
 
-  getTVShows(page: number = 1): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/tv/top_rated`, {
+  getTVShows(page: number = 1, sortBy: string = 'vote_count.desc'): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/discover/tv`, {
       ...this.authHeaders,
       params: {
         language: 'en-US',
         page: page.toString(),
+        sort_by: sortBy,
       },
     });
   }
