@@ -35,7 +35,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.searchSub = this.searchService.search$.subscribe((query) => {
       this.searchMovies(query); 
     });
-    this.getGenres()
+    this.getGenres();
   }
 
   loadMovie(): void {
