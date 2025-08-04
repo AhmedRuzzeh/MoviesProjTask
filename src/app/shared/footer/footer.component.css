@@ -22,6 +22,32 @@ footer {
     color: #fff;
 }
 
+@media (max-width: 768px) {
+    .navFooter {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        text-align: center;
+    }
+    
+    .navFooter div {
+        margin-bottom: 2rem;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .navFooter {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .navFooter div {
+        margin-bottom: 1.5rem;
+    }
+}
+
 .footerImgDiv {
     position: relative;
     display: flex;
@@ -29,10 +55,23 @@ footer {
     width: 13rem;
 }
 
+@media (max-width: 768px) {
+    .footerImgDiv {
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+}
+
 .footerImgDiv img {
     width: 80%;
     height: auto;
     align-self: flex-end;
+}
+
+@media (max-width: 768px) {
+    .footerImgDiv img {
+        align-self: center;
+    }
 }
 
 .footerImgDiv button {
@@ -44,6 +83,13 @@ footer {
     color: rgb(68, 161, 197);
 }
 
+@media (max-width: 480px) {
+    .footerImgDiv button {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.2rem;
+    }
+}
+
 .navFooter div {
     margin-right: 30px;
     min-width: 0;
@@ -53,6 +99,22 @@ footer {
     list-style: none;
     padding-left: 0;
     margin-left: 0;
+}
+
+.navFooter h3 {
+    font-size: 1rem;
+    margin: 0 0 1rem 0;
+}
+
+@media (max-width: 480px) {
+    .navFooter h3 {
+        font-size: 0.9rem;
+    }
+    
+    .navFooter li {
+        font-size: 0.8rem;
+        margin: 0.3rem 0;
+    }
 }
 
 .navFooter a {

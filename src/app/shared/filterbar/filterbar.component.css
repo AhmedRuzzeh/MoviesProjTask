@@ -12,6 +12,14 @@
     margin-top: 1rem;
 }
 
+@media (max-width: 768px) {
+    .card {
+        min-width: 100%;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
 .topCard {
     width: 100%;
     display: flex;
@@ -115,6 +123,16 @@ span.arrowClosed {
     padding: 4px 12px;
     margin-right: 6px;
     margin-top: 8px;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 480px) {
+    .filter li {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        margin-right: 4px;
+        margin-top: 6px;
+    }
 }
 
 .filter li:hover {
@@ -139,6 +157,13 @@ span.arrowClosed {
     height: 44px;
     min-width: 16.25rem;
     width: 16.25rem;
+}
+
+@media (max-width: 768px) {
+    .search {
+        min-width: 100%;
+        width: 100%;
+    }
 }
 
 .search button {

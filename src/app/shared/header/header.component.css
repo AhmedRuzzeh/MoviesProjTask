@@ -13,11 +13,52 @@ header {
     z-index: 1000;
 }
 
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        min-height: 60px;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem;
+    }
+}
+
 .headerDiv {
     justify-content: space-between;
     margin: 1.5rem;
     align-content: center;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .headerDiv {
+        margin: 0.5rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .headerDiv:first-child {
+        order: 1;
+        margin-bottom: 0.5rem;
+    }
+    
+    .headerDiv:last-child {
+        order: 2;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .headerDiv {
+        margin: 0.25rem;
+    }
+    
+    .headerDiv button {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+    }
 }
 
 .headerDiv button {
@@ -33,6 +74,12 @@ header {
 
 .logo {
     width: 9rem;
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 7rem;
+    }
 }
 
 .headerDiv .languageBtn {
@@ -57,6 +104,14 @@ header {
     border-bottom: 1px solid rgba(227,227,227);
 }
 
+@media (max-width: 768px) {
+    .searchDiv {
+        position: relative;
+        top: 0;
+        margin-top: 0.5rem;
+    }
+}
+
 .searchDiv div {
     width: 100%;
     background-color: #fff;
@@ -71,6 +126,12 @@ header {
     padding: 0 40px;
     width: 100%;
     display: flex;
+}
+
+@media (max-width: 480px) {
+    .searchDiv div div {
+        padding: 0 20px;
+    }
 }
 
 .searchDiv div div span {
@@ -96,6 +157,13 @@ span input {
     text-indent: 0;
     padding-left: 30px;
     padding-right: 0;
+}
+
+@media (max-width: 480px) {
+    span input {
+        padding-left: 15px;
+        font-size: 0.9rem;
+    }
 }
 
 .hidden {
