@@ -9,7 +9,7 @@ header {
     height: 15%;
     width: 100%;
     flex-wrap: wrap;
-    padding: 0 18rem;
+    padding: 0 1rem;
     z-index: 1000;
 }
 

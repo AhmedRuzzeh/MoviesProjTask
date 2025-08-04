@@ -18,20 +18,11 @@ export class MoviesService {
   constructor(private http: HttpClient) {}
 
   getMovies(page: number = 1): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/movie/popular`, {
+    return this.http.get<any>(`${this.apiUrl}/movie/top_rated`, {
       ...this.authHeaders,
       params: {
         language: 'en-US',
         page: page.toString(),
-      },
-    });
-  }
-
-  getMovieDetails(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/movie/${id}`, {
-      ...this.authHeaders,
-      params: {
-        language: 'en-US',
       },
     });
   }

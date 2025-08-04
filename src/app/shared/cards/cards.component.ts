@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Movie } from '../../components/models/movies.interface';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Data } from '../../components/models/data.interface';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,5 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './cards.component.css'
 })
 export class CardsComponent {
-  @Input() movies: Movie[] = [];
+  @Input() data: Data[] = [];
+  @Input() isMovie!: boolean;
+  @Output() loadMore = new EventEmitter<void>();
 }

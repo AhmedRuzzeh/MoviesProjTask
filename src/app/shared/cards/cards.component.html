@@ -1,27 +1,55 @@
 <div class="movies-list">
-    <div class="movies">
-
-        <div class="card"  *ngFor="let movie of movies">
-            <div class="image">
-                <div>
-                    <a><img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}" /></a>
+    @if (isMovie) 
+    {
+        <div class="movies">
+    
+            <div class="card"  *ngFor="let data of data">
+                <div class="image">
+                    <div>
+                        <a><img [src]="'https://image.tmdb.org/t/p/w500' + data.poster_path" alt="{{ data.title }}" /></a>
+                    </div>
+                    <div class="options">
+                        <a>
+                            <div class="opt-circle"></div>
+                        </a>
+                    </div>
                 </div>
-                <div class="options">
-                    <a>
-                        <div class="opt-circle"></div>
-                    </a>
+    
+                <div class="content">
+                    <h2>{{ data.title }}</h2>
+                    <p>{{ data.release_date }}</p>
                 </div>
             </div>
-
-            <div class="content">
-                <h2>{{ movie.title }}</h2>
-                <p>{{ movie.release_date }}</p>
-            </div>
+            
         </div>
-        
-    </div>
+    }
+    
+    @else 
+    {
+        <div class="movies">
+    
+            <div class="card"  *ngFor="let data of data">
+                <div class="image">
+                    <div>
+                        <a><img [src]="'https://image.tmdb.org/t/p/w500' + data.poster_path" alt="{{ data.name }}" /></a>
+                    </div>
+                    <div class="options">
+                        <a>
+                            <div class="opt-circle"></div>
+                        </a>
+                    </div>
+                </div>
+    
+                <div class="content">
+                    <h2>{{ data.name }}</h2>
+                    <p>{{ data.first_air_date }}</p>
+                </div>
+            </div>
+            
+        </div>
+    }
 
-    <div class="loadMore">
+    <div (click)="loadMore.emit()" class="loadMore">
         <a>Load More</a>
     </div>
 

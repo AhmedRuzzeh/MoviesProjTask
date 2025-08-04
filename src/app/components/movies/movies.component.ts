@@ -1,8 +1,9 @@
 import { Component, OnInit  } from '@angular/core';
+import { Data } from '../models/data.interface';
 import { MoviesService } from '../../services/movies.service';
+
 import { FilterbarComponent } from '../../shared/filterbar/filterbar.component';
 import { CardsComponent } from '../../shared/cards/cards.component';
-import { Movie, MovieResponse } from '../models/movies.interface';
 
 @Component({
   selector: 'app-movies',
@@ -14,7 +15,7 @@ import { Movie, MovieResponse } from '../models/movies.interface';
 export class MoviesComponent implements OnInit {
   loading = false;
   currentPage= 1;
-  movies: Movie[]=[]; 
+  movies: Data[]=[]; 
   totalItems= 0;
 
   constructor(private moviesService: MoviesService) {}
@@ -26,11 +27,12 @@ export class MoviesComponent implements OnInit {
 
   loadMovie(): void {
     this.loading = true;
-    const pageNumber = this.currentPage + 1;
+    this.currentPage++;
+    const pageNumber = this.currentPage;
 
     this.moviesService.getMovies(pageNumber).subscribe({
       next : (response) => {
-        this.movies = response.results;
+        this.movies = [...this.movies,...response.results];
         this.totalItems = response.total_results;
         this.loading = false;
       },
