@@ -27,6 +27,12 @@
     flex-wrap: nowrap;
     align-items: center;
     padding: 0.6rem 1rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.topCard:hover {
+    background-color: #f8f9fa;
 }
 
 .topCard h2 {
@@ -41,16 +47,30 @@ span.arrowClosed {
     top: 0;
     left: 0;
     cursor: pointer;
+    transition: transform 0.2s ease;
 }
+
 .arrowClosed i {
     font-size: 0.8rem;
+    transition: transform 0.2s ease;
 }
+
 /* ---------------------------------------------- */
 .filter {
     width: 100%;
     border-top: 1px solid #eee;
     padding: 0px 1rem 1rem 1rem;
     margin-top: 0;
+    max-height: 1000px;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.collapsed {
+    max-height: 0 !important;
+    padding: 0 1rem !important;
+    opacity: 0;
+    overflow: hidden;
 }
 
 .filter h3 {
@@ -72,6 +92,7 @@ span.arrowClosed {
     cursor: pointer;
     font-size: 0.8rem;
 }
+
 #sort option {
     background-color: white;
     font-size: 0.8rem;
@@ -124,8 +145,9 @@ span.arrowClosed {
 }
 
 .filter li a {
-    font-size: 0.9rem ;
-    font-weight: 300 ;
+    font-size: 0.9rem;
+    font-weight: 300;
+    cursor: pointer;
 }
 
 @media (max-width: 480px) {
@@ -145,9 +167,12 @@ span.arrowClosed {
     border: none;
 }
 
-.filter li a {
-    cursor: pointer;
+.active {
+    background-color: rgb(37, 156, 195) !important;
+    color: white !important;
+    border: none !important;
 }
+
 /* ---------------------------------------------- */
 
 .search {
@@ -184,7 +209,7 @@ span.arrowClosed {
     cursor: pointer;
 }
 
-.active {
+.search button.active {
     background-color: rgb(37, 156, 195);
     color: white !important;
 }

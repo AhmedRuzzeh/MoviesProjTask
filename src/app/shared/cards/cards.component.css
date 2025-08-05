@@ -172,6 +172,10 @@ img {
     font-size: 1em;
 }
 
+.content h2:hover {
+    color: rgb(1, 180, 228);
+}
+
 .content p {
     display: block;
     margin: 0;

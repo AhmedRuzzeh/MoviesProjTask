@@ -1,58 +1,100 @@
-<div class="card"> <!-- Sort Section -->
-  <div class="topCard">
+<div class="card">
+  <!-- Sort Section -->
+  <div class="topCard" (click)="toggleSortSection()">
     <h2>Sort</h2>
-    <span class="arrowClosed"><i class="fas fa-chevron-right"></i></span>
+    <span class="arrowClosed">
+      <i
+        [class]="
+          isSortCollapsed ? 'fas fa-chevron-right' : 'fas fa-chevron-down'
+        "
+      ></i>
+    </span>
   </div>
 
-  <div class="filter">
+  <div class="filter" [class.collapsed]="isSortCollapsed">
     <h3 for="sort">Sort Results By:</h3>
     <select id="sort" name="sort" (change)="onSortChange($event)">
-      <option value="popularity.desc selected">Popularity Descending</option>
+      <option value="popularity.desc">Popularity Descending</option>
       <option value="popularity.asc">Popularity Ascending</option>
       <option value="vote_count.desc">Vote Count Descending</option>
-      <option value="vote_count.asc">Vote Count Ascending</option> 
-      <option value="vote_average.desc">Vote Average Descending</option> 
-      <option value="vote_average.asc">Vote Average Ascending</option> 
+      <option value="vote_count.asc">Vote Count Ascending</option>
+      <option value="vote_average.desc">Vote Average Descending</option>
+      <option value="vote_average.asc">Vote Average Ascending</option>
     </select>
   </div>
 </div>
 
-<div class="card"> <!-- Filter Section -->
-
-  <div class="topCard">
+<div class="card">
+  <!-- Filter Section -->
+  <div class="topCard" (click)="toggleFilterSection()">
     <h2>Filter</h2>
-    <span class="arrowClosed"><i class="fas fa-chevron-right"></i></span>
-  </div>
-  
-
-  <div class="filter"> <!-- Release Dates Section -->
-    <div class="rdatesTop">
-      <h3>Release Dates:</h3>
-    </div>
-    <div class="rdatesBottom">
-      <div class="yearCol">
-        <span class="label">from:</span>
-        <span class="input"><input type="date" id="fromDate" name="fromDate" /></span>
-      </div>
-      <div class="yearCol">
-        <span class="label">to:</span>
-        <span class="input"><input type="date" id="toDate" name="toDate" /></span>
-      </div>
-    </div>
+    <span class="arrowClosed">
+      <i
+        [class]="
+          isFilterCollapsed ? 'fas fa-chevron-right' : 'fas fa-chevron-down'
+        "
+      ></i>
+    </span>
   </div>
 
-  <div class="filter"> <!-- Genre Section -->
-    <h3>Genres:</h3>
-    <ul>
-      <li *ngFor="let genre of genres" [class.active]="selectedGenres.includes(genre.id)">
-        <a (click)="toggleGenre(genre.id)">
-          {{ genre.name }}
-        </a>
-      </li>
-    </ul>
+  <div [class.collapsed]="isFilterCollapsed">
+    <div class="filter">
+      <!-- Release Dates Section -->
+      <div class="rdatesTop">
+        <h3>Release Dates:</h3>
+      </div>
+      <div class="rdatesBottom">
+        <div class="yearCol">
+          <span class="label">from:</span>
+          <span class="input">
+            <input
+              type="date"
+              id="fromDate"
+              name="fromDate"
+              [value]="fromDate"
+              (change)="onDateChange($event, 'from')"
+            />
+          </span>
+        </div>
+        <div class="yearCol">
+          <span class="label">to:</span>
+          <span class="input">
+            <input
+              type="date"
+              id="toDate"
+              name="toDate"
+              [value]="toDate"
+              (change)="onDateChange($event, 'to')"
+            />
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter">
+      <!-- Genre Section -->
+      <h3>Genres:</h3>
+      <ul>
+        <li
+          *ngFor="let genre of genres"
+          [class.active]="selectedGenres.includes(genre.id)"
+        >
+          <a (click)="toggleGenre(genre.id)">
+            {{ genre.name }}
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
-<div class="search">  <!-- Search Section -->
-  <button class="searchButton" (click)="onSearchClick()" [class.active]="searchReady">Search</button>
+<div class="search">
+  <!-- Search Section -->
+  <button
+    class="searchButton"
+    (click)="onSearchClick()"
+    [class.active]="searchReady"
+  >
+    Search
+  </button>
 </div>

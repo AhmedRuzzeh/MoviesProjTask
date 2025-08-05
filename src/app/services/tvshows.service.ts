@@ -18,7 +18,13 @@ export class TVShowsService {
 
   constructor(private http: HttpClient) {}
 
-  getTVShows(page: number = 1, sortBy: string = 'popularity.desc', genres: number[] = []): Observable<any> {
+  getTVShows(
+    page: number = 1, 
+    sortBy: string = 'popularity.desc', 
+    genres: number[] = [], 
+    fromDate?: string, 
+    toDate?: string
+  ): Observable<any> {
     const params: any = {
       language: 'en-US',
       page: page.toString(),
@@ -27,6 +33,14 @@ export class TVShowsService {
 
     if (genres.length > 0) {
       params.with_genres = genres.join(',');
+    }
+
+    if (fromDate) {
+      params['first_air_date.gte'] = fromDate;
+    }
+
+    if (toDate) {
+      params['first_air_date.lte'] = toDate;
     }
 
     console.log('Sending params:', params);

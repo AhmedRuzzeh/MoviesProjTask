@@ -22,6 +22,8 @@ export class TVShowsComponent implements OnInit, OnDestroy {
   tvshows: Data[] = []; 
   genres: object[] = [];
   selectedGenres: number[] = [];
+  fromDate?: string;
+  toDate?: string;
   totalItems = 0;
 
   private searchSub!: Subscription; 
@@ -40,9 +42,16 @@ export class TVShowsComponent implements OnInit, OnDestroy {
     this.getGenres();
   }
 
-  onSearch(filters: { sortBy: string; genreIds: number[] }): void {
+  onSearch(filters: { 
+    sortBy: string; 
+    genreIds: number[]; 
+    fromDate?: string; 
+    toDate?: string; 
+  }): void {
     this.sortBy = filters.sortBy;
     this.selectedGenres = filters.genreIds;
+    this.fromDate = filters.fromDate;
+    this.toDate = filters.toDate;
 
     this.tvshows = [];
     this.currentPage = 0;
@@ -54,7 +63,13 @@ export class TVShowsComponent implements OnInit, OnDestroy {
     this.currentPage++;
     const pageNumber = this.currentPage;
 
-    this.tvShowsService.getTVShows(pageNumber, this.sortBy, this.selectedGenres).subscribe({
+    this.tvShowsService.getTVShows(
+      pageNumber, 
+      this.sortBy, 
+      this.selectedGenres, 
+      this.fromDate, 
+      this.toDate
+    ).subscribe({
       next: (response) => {
         this.tvshows = [...this.tvshows, ...response.results];
         this.totalItems = response.total_results;
