@@ -3,14 +3,14 @@
     <img src="/logo.png" alt="TMDB" class="logo" routerLink="/" />
     <button routerLink="/movies">Movies</button>
     <button routerLink="/tvshows">TV Shows</button>
-    <button>People</button>
-    <button>More</button>
+    <button class="hideBtn">People</button>
+    <button class="hideBtn">More</button>
   </div>
 
   <div class="headerDiv">
-    <button class="languageBtn">EN</button>
+    <button class="languageBtn hideBtn">EN</button>
     <button>Login</button>
-    <button>Join TMDB</button>
+    <button class="hideBtn">Join TMDB</button>
     <button (click)="onSearchBarClick()">
       <i
         [ngClass]="isSearchBarVisible ? 'fa-solid fa-xmark' : 'fas fa-search'"
