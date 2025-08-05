@@ -37,18 +37,13 @@
 }
 
 span.arrowClosed {
-    background-image: url("/arrowClosed.png");
     position: relative;
     top: 0;
     left: 0;
-    display: inline-flex;
-    min-width: 1em;
-    width: 1em;
-    min-height: 1em;
-    height: 1em;
-    background-position: center center;
-    background-repeat: no-repeat;
     cursor: pointer;
+}
+.arrowClosed i {
+    font-size: 0.8rem;
 }
 /* ---------------------------------------------- */
 .filter {
@@ -63,14 +58,16 @@ span.arrowClosed {
     align-items: center;
     width: 100%;
     margin-bottom: 0.6rem;
-    font-size: 0.9rem;
+    font-size: 1em;
+    font-weight: 300;
+    color: #666666;
 }
 
 #sort {
     width: 100%;
     background-color: #dee2e6;
     border: none;
-    padding: 0.4rem;
+    padding: 0.6rem;
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.8rem;
@@ -90,6 +87,7 @@ span.arrowClosed {
     display: inline-flex;
     align-items: center;
     width: 100px;
+    color: #666666;
 }
 
 .yearCol .input {
@@ -119,19 +117,25 @@ span.arrowClosed {
 .filter li {
     display: inline-flex;
     border: 1px solid #9e9e9e;
-    border-radius: 14px;
-    padding: 4px 12px;
+    border-radius: 1.5rem;
+    padding: 3px 12px;
     margin-right: 6px;
     margin-top: 8px;
-    font-size: 0.8rem;
+}
+
+.filter li a {
+    font-size: 0.9rem ;
+    font-weight: 300 ;
 }
 
 @media (max-width: 480px) {
     .filter li {
-        font-size: 0.7rem;
         padding: 3px 8px;
         margin-right: 4px;
         margin-top: 6px;
+    }
+    .filter li a {
+        font-size: 0.7rem;
     }
 }
 

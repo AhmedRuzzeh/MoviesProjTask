@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Data } from '../../components/models/data.interface';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DatePipe],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.css'
 })
