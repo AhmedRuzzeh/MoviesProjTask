@@ -16,6 +16,16 @@ export class MainService {
     }),
   };
 
+  getMovieDetails(id: number, type: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${type}/${id}?api_key=${this.apiKey}`, {
+      ...this.authHeaders,
+      params: {
+        language: 'en-US',
+        page: '1',
+      }
+    });
+  }
+
   private searchSubject = new Subject<string>();
   search$ = this.searchSubject.asObservable();
 

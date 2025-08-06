@@ -15,7 +15,6 @@ import { CardsComponent } from '../../shared/cards/cards.component';
   styleUrl: './movies.component.css',
 })
 export class MoviesComponent implements OnInit, OnDestroy {
-
   loading = false;
   currentPage = 0;
   sortBy: string = 'popularity.desc';
@@ -30,23 +29,23 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   constructor(
     private moviesService: MoviesService,
-    private searchService: MainService, 
+    private searchService: MainService
   ) {}
 
   ngOnInit(): void {
     this.loadMovie();
 
     this.searchSub = this.searchService.search$.subscribe((query) => {
-      this.searchMovies(query); 
+      this.searchMovies(query);
     });
     this.getGenres();
   }
 
-  onSearch(filters: { 
-    sortBy: string; 
-    genreIds: number[]; 
-    fromDate?: string; 
-    toDate?: string; 
+  onSearch(filters: {
+    sortBy: string;
+    genreIds: number[];
+    fromDate?: string;
+    toDate?: string;
   }): void {
     console.log('Received from filterbar:', filters);
 
@@ -65,23 +64,25 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.currentPage++;
     const pageNumber = this.currentPage;
 
-    this.moviesService.getMovies(
-      this.currentPage, 
-      this.sortBy, 
-      this.selectedGenres, 
-      this.fromDate, 
-      this.toDate
-    ).subscribe({
-      next: (response) => {
-        this.movies = [...this.movies, ...response.results];
-        this.totalItems = response.total_results;
-        this.loading = false;
-      },
-      error: (error) => {
-        console.error('Error loading movies', error);
-        this.loading = false;
-      },
-    });
+    this.moviesService
+      .getMovies(
+        this.currentPage,
+        this.sortBy,
+        this.selectedGenres,
+        this.fromDate,
+        this.toDate
+      )
+      .subscribe({
+        next: (response) => {
+          this.movies = [...this.movies, ...response.results];
+          this.totalItems = response.total_results;
+          this.loading = false;
+        },
+        error: (error) => {
+          console.error('Error loading movies', error);
+          this.loading = false;
+        },
+      });
   }
 
   getGenres(): void {
@@ -100,7 +101,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
     this.searchService.getSearch(1, 'movie', query).subscribe({
       next: (response) => {
-        this.movies = response.results; 
+        this.movies = response.results;
         this.totalItems = response.total_results;
         this.loading = false;
       },

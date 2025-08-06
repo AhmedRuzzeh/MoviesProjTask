@@ -1,13 +1,46 @@
 <div class="main-container">
-  <div>
+  <div [style.background-image]="'url(https://image.tmdb.org/t/p/w500' + data?.poster_path + ')'">
     <div class="container2">
       <section>
         <div class="poster-wrapper">
           <div class="poster">
-            <img [src]="'https://image.tmdb.org/t/p/w500' + poster" alt="{{ poster }}" />
+            <img
+              [src]="'https://image.tmdb.org/t/p/w500' + data?.poster_path"
+              [alt]="data?.title"
+            />
           </div>
         </div>
-        <div class="desc-wrapper"></div>
+
+        <div class="desc-wrapper">
+          <section>
+            <div class="title">
+              <h2>{{ data?.title }}</h2>
+              <div class="facts">
+                @if (data?.adult) {<span class="cert">PG-18</span>} @else {<span
+                  class="cert"
+                  >PG-13</span
+                >}
+                <div class="circle-container">
+                  <i class="fas fa-circle small-icon"></i>
+                </div>
+                <span class="date">{{ data?.release_date | date }}</span>
+                <div class="circle-container">
+                  <i class="fas fa-circle small-icon"></i>
+                </div>
+                <span class="duration">{{
+                  getTimeFormatted(data?.runtime ?? 0)
+                }}</span>
+              </div>
+            </div>
+            <div class="header_info">
+              <h3 class="header-h3-1">{{ data?.tagline }}</h3>
+              <h3 class="header-h3-2">Overview</h3>
+              <div class="overview">
+                <p>{{ data?.overview }}</p>
+              </div>
+            </div>
+          </section>
+        </div>
       </section>
     </div>
   </div>

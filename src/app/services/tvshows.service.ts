@@ -19,10 +19,10 @@ export class TVShowsService {
   constructor(private http: HttpClient) {}
 
   getTVShows(
-    page: number = 1, 
-    sortBy: string = 'popularity.desc', 
-    genres: number[] = [], 
-    fromDate?: string, 
+    page: number = 1,
+    sortBy: string = 'popularity.desc',
+    genres: number[] = [],
+    fromDate?: string,
     toDate?: string
   ): Observable<any> {
     const params: any = {

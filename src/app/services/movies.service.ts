@@ -19,12 +19,11 @@ export class MoviesService {
   constructor(private http: HttpClient) {}
 
   getMovies(
-    page: number = 1, 
-    sortBy: string = 'popularity.desc', 
-    genres: number[] = [], 
-    fromDate?: string, 
-    toDate?: string
-  ): Observable<any> {
+    page: number = 1,
+    sortBy: string = 'popularity.desc',
+    genres: number[] = [],
+    fromDate?: string,
+    toDate?: string): Observable<any> {
     const params: any = {
       language: 'en-US',
       page: page.toString(),
@@ -52,6 +51,9 @@ export class MoviesService {
   }
 
   getGenres(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/genre/movie/list`, this.authHeaders);
+    return this.http.get<any>(
+      `${this.apiUrl}/genre/movie/list`,
+      this.authHeaders
+    );
   }
 }
