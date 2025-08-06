@@ -14,7 +14,8 @@
         <div class="desc-wrapper">
           <section>
             <div class="title">
-              <h2>{{ data?.title }}</h2>
+              @if (this.type === 'movie') { <h2>{{ data?.title }}</h2> }
+              @else { <h2>{{ data?.name }}</h2> }
               <div class="facts">
                 @if (data?.adult) {<span class="cert">PG-18</span>} @else {<span
                   class="cert"
@@ -23,13 +24,21 @@
                 <div class="circle-container">
                   <i class="fas fa-circle small-icon"></i>
                 </div>
-                <span class="date">{{ data?.release_date | date }}</span>
-                <div class="circle-container">
+                 @if (this.type === 'movie') {<span class="date">{{ data?.release_date | date }}</span>}
+                 @else {<span class="date">{{ data?.first_air_date | date }}</span>}
+                 @if (this.type === 'movie') {
+                 <div class="circle-container">
                   <i class="fas fa-circle small-icon"></i>
                 </div>
                 <span class="duration">{{
                   getTimeFormatted(data?.runtime ?? 0)
                 }}</span>
+                 }
+              </div>
+            </div>
+            <div>
+              <div class="rating-circle">
+                <span>{{ ((data?.vote_average ?? 0) * 10).toFixed(0) }}%</span>
               </div>
             </div>
             <div class="header_info">
