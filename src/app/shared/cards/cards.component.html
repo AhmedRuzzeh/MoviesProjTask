@@ -1,7 +1,7 @@
 <div class="movies-list">
   @if (isMovie) {
   <div class="movies">
-    <div class="card" *ngFor="let data of data">
+    <div class="card" *ngFor="let data of data" (click)="navigateToDetails('movie', data.id)">
       <div class="image">
         <div>
           <a>
@@ -28,7 +28,7 @@
   </div>
   } @else {
   <div class="movies">
-    <div class="card" *ngFor="let data of data">
+    <div class="card" *ngFor="let data of data" (click)="navigateToDetails('tv', data.id)">
       <div class="image">
         <div>
           <a

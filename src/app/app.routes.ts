@@ -3,6 +3,7 @@ import { Routes } from '@angular/router'
 import { HomeComponent } from './components/home/home.component'
 import { MoviesComponent } from './components/movies/movies.component'
 import { TVShowsComponent } from './components/tvshows/tvshows.component'
+import { DetailsComponent } from './components/details/details.component'
 
 const routeConfig: Routes = [
     {
@@ -14,12 +15,16 @@ const routeConfig: Routes = [
         path: 'movies',
         component: MoviesComponent,
         title: 'TMDB Movies Page',
-    }
-    ,
+    },
     {
         path: 'tvshows',
         component: TVShowsComponent,
         title: 'TMDB TV Shows Page',
+    },
+    {
+        path: 'details/:type/:id',
+        component: DetailsComponent,
+        title: 'TMDB Details Page',
     }
 ];
 

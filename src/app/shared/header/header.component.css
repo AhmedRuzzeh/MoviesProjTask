@@ -7,21 +7,27 @@ header {
     left: 0;
     height: 64px;
     width: 100%;
+    max-width: 100vw;
     
     flex-wrap: wrap;
     background-color: rgba(3,37,61);
     
     z-index: 1000;
     transition: top .2s linear;
+    overflow-x: hidden;
 }
 
 .headerDiv {
+    display: flex;
+    align-items: center;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    justify-content: space-between;
-    margin: 1.5rem;
-    align-content: center;
-    text-align: center;
+    margin: 0;
+    height: 64px;
+}
+
+.headerDiv.right-section {
+    justify-content: flex-end;
 }
 
 .headerDiv button {
@@ -30,6 +36,7 @@ header {
     border: none;
     background: none;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .headerDiv button:hover, .logo {
@@ -38,8 +45,8 @@ header {
 
 .logo {
     width: 9rem;
+    height: auto;
 }
-
 
 .headerDiv .languageBtn {
     border-style: solid;
@@ -47,6 +54,7 @@ header {
     border-width: 1px;
     border-radius: 4px;
     width: auto;
+    padding: 0.3rem 0.6rem;
 }
 
 .headerDiv .languageBtn:hover {
@@ -54,13 +62,118 @@ header {
     color: rgba(3,37,61);
 }
 
+/* Mobile Navigation Button */
+.mobile-nav-btn {
+    display: none;
+    font-size: 1.2rem;
+    margin-left: 0 !important;
+    margin-right: 1rem;
+    padding: 0.5rem;
+}
+
+/* Mobile Navigation Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-nav-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.mobile-nav-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100%;
+    background-color: rgba(3,37,61, 0.95);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-nav-visible .mobile-nav-menu {
+    transform: translateX(0);
+}
+
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-header h3 {
+    color: white;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.mobile-nav-items {
+    padding: 1rem 0;
+}
+
+.mobile-nav-items button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.mobile-nav-items button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-items button i {
+    margin-right: 1rem;
+    width: 20px;
+}
+
+.search2Btn {
+    display: none;
+    color: white;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
 .searchDiv {
     width: 100%;
+    max-width: 100vw;
     position: absolute;
     top: 64px;
     left: 0;
     border-top: 1px solid rgba(227,227,227);
     border-bottom: 1px solid rgba(227,227,227);
+    overflow-x: hidden;
 }
 
 .searchDiv div {
@@ -70,13 +183,17 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 .searchDiv div div {
     justify-content: space-between;
     padding: 0 40px;
     width: 100%;
+    max-width: 100%;
     display: flex;
+    box-sizing: border-box;
 }
 
 .searchDiv div div span {
@@ -88,6 +205,7 @@ header {
     transition: all 0s;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 span input {
@@ -102,6 +220,7 @@ span input {
     text-indent: 0;
     padding-left: 30px;
     padding-right: 0;
+    box-sizing: border-box;
 }
 
 .hidden {
@@ -109,73 +228,60 @@ span input {
 }
 
 @media (max-width: 912px) {
-    .headerDiv {
-        margin: 0.5rem;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .searchDiv {
-        position: relative;
-        top: 0;
-        margin-top: 0.5rem;
-    }
-
-    .hideBtn {
+    .desktop-nav {
         display: none;
     }
-}
 
-@media (max-width: 768px) {
-    .headerDiv {
-        margin: 0.5rem;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: center;
+    .mobile-nav-btn {
+        display: block;
     }
 
-    .searchDiv {
-        position: relative;
-        top: 0;
-        margin-top: 0.5rem;
+    .headerDiv {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        justify-content: space-between;
+        width: 100%;
     }
     
-    .hideBtn {
+    .headerDiv:first-child {
+        justify-content: center;
+        position: relative;
+    }
+    
+    .headerDiv.right-section {
         display: none;
+    }
+
+    .mobile-nav-btn {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .logo {
+        margin: 0;
+        width: 7rem;
+    }
+
+    .search2Btn {
+        display: block;
+        right: 0;
+        position: absolute;
+        padding-right: 1rem;
+    }
+
+    .searchDiv {
+        position: relative;
+        top: 0;
+        margin-top: 0;
+    }
+    
+    .searchDiv div div {
+        padding: 0 15px;
     }
 }
 
 @media (max-width: 555px) {
-
-    .headerDiv {
-        margin: 0.25rem;
-    }
     
-    .headerDiv button {
-        margin-left: 0.5rem;
-        font-size: 0.9rem;
-    }
-
-    .searchDiv div div {
-        padding: 0 20px;
-    }
-
-    span input {
-        padding-left: 15px;
-        font-size: 0.9rem;
-    }
-
-    .logo {
-        width: 7rem;
-    } 
-    .headerDiv .languageBtn {
-        width: 4rem;
-        font-size: 0.9rem;
-    }
-    .hideBtn {
-        display: none;
-    }
 }

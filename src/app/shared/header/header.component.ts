@@ -13,6 +13,7 @@ import { MainService } from '../../services/main.service';
 })
 export class HeaderComponent {
   isSearchBarVisible = false;
+  isMobileNavVisible = false;
   searchQuery = '';
 
   constructor(private searchService: MainService) {}
@@ -20,10 +21,18 @@ export class HeaderComponent {
   onSearchBarClick() {
     this.isSearchBarVisible = !this.isSearchBarVisible;
   }
-
+  
   onSearchInputKey(event: KeyboardEvent) {
     if (event.key === 'Enter' && this.searchQuery.trim()) {
       this.searchService.emitSearch(this.searchQuery.trim());
     }
+  }
+  
+  onMobileNavClick() {
+    this.isMobileNavVisible = !this.isMobileNavVisible;
+  }
+
+  closeMobileNav() {
+    this.isMobileNavVisible = false;
   }
 }

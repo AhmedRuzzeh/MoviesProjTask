@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Data } from '../../components/models/data.interface';
 import { CommonModule, DatePipe } from '@angular/common';
 
@@ -14,4 +15,10 @@ export class CardsComponent {
   @Input() isMovie!: boolean;
 
   @Output() loadMore = new EventEmitter<void>();
+
+  constructor(private router: Router) {}
+
+  navigateToDetails(type: string, id: number): void {
+    this.router.navigate(['/details', type, id]);
+  }
 }

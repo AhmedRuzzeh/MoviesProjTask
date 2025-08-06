@@ -1,33 +1,67 @@
 <header>
   <div class="headerDiv">
-    <img src="/logo.png" alt="TMDB" class="logo" routerLink="/" />
-    <button routerLink="/movies">Movies</button>
-    <button routerLink="/tvshows">TV Shows</button>
-    <button class="hideBtn">People</button>
-    <button class="hideBtn">More</button>
-  </div>
+    <button class="mobile-nav-btn" (click)="onMobileNavClick()">
+      <i class="fas fa-bars"></i>
+    </button>
 
-  <div class="headerDiv">
-    <button class="languageBtn hideBtn">EN</button>
-    <button>Login</button>
-    <button class="hideBtn">Join TMDB</button>
-    <button (click)="onSearchBarClick()">
-      <i
-        [ngClass]="isSearchBarVisible ? 'fa-solid fa-xmark' : 'fas fa-search'"
-      ></i>
+    <img src="/logo.png" alt="TMDB" class="logo" routerLink="/" />
+    <button routerLink="/movies" class="desktop-nav">Movies</button>
+    <button routerLink="/tvshows" class="desktop-nav">TV Shows</button>
+    <button class="hideBtn desktop-nav">People</button>
+    <button class="hideBtn desktop-nav">More</button>
+    
+    <button (click)="onSearchBarClick()" class="search2Btn">
+      <i [ngClass]="isSearchBarVisible ? 'fa-solid fa-xmark' : 'fas fa-search'"></i>
     </button>
   </div>
 
-  <div class="searchDiv" [ngClass]="{ hidden: !isSearchBarVisible }">
-    <div>
-        <div>
-            <span>
-              <i class="fas fa-search"></i>
-              <input type="text" id="searchInput" [(ngModel)]="searchQuery" (keyup)="onSearchInputKey($event)"
-                placeholder="Search for a movie, TV show, person..."
-              />
-            </span>
-        </div>
+  <div class="headerDiv right-section">
+    <button class="languageBtn hideBtn desktop-nav">EN</button>
+    <button class="desktop-nav">Login</button>
+    <button class="hideBtn desktop-nav">Join TMDB</button>
+    <button (click)="onSearchBarClick()">
+      <i [ngClass]="isSearchBarVisible ? 'fa-solid fa-xmark' : 'fas fa-search'"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation Overlay -->
+  <div
+    class="mobile-nav-overlay"
+    [ngClass]="{ 'mobile-nav-visible': isMobileNavVisible }"
+    (click)="closeMobileNav()">
+
+    <div class="mobile-nav-menu" (click)="$event.stopPropagation()">
+
+      <div class="mobile-nav-header">
+        <h3>Navigation</h3>
+        <button class="close-btn" (click)="closeMobileNav()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="mobile-nav-items">
+        <button routerLink="/" (click)="closeMobileNav()">Home</button>
+        <button routerLink="/movies" (click)="closeMobileNav()">Movies</button>
+        <button routerLink="/tvshows" (click)="closeMobileNav()">TV Shows</button>
+      </div>
+
     </div>
   </div>
 </header>
+
+<div class="searchDiv" [ngClass]="{ hidden: !isSearchBarVisible }">
+  <div>
+    <div>
+      <span>
+        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          id="searchInput"
+          [(ngModel)]="searchQuery"
+          (keyup)="onSearchInputKey($event)"
+          placeholder="Search for a movie, TV show, person..."
+        />
+      </span>
+    </div>
+  </div>
+</div>
