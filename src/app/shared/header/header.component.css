@@ -62,6 +62,18 @@ header {
     color: rgba(3,37,61);
 }
 
+.custom-plus {
+  color: white; 
+  padding: 8px; 
+  border-radius: 0; 
+  font-size: 20px; 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
 /* Mobile Navigation Button */
 .mobile-nav-btn {
     display: none;

@@ -1,0 +1,32 @@
+body {
+    background-image: linear-gradient(180deg, rgb(74, 74, 74), rgb(30, 30, 30));
+    font: 14px Arial, sans-serif;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+}
+
+.nig {
+    margin: 3rem 25rem;
+    box-shadow: rgba(0, 0, 0, .55) 0 0 12px 1px;
+    
+} 
+
+.header {
+    background-color: rgb(38, 38, 38);
+    padding: 1rem;
+    border: 1px solid black;
+}
+
+.header img {
+    cursor: pointer;
+}
+
+.form-container {
+    height: 30rem;
+    background-color: rgb(224, 224, 224);
+    border: 1px solid black;
+}
