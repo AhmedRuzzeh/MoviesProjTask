@@ -102,6 +102,7 @@ export class NewMovieComponent {
       const formData: MovieFormData = this.movieForm.value;
       console.log('Movie data:', formData);
       
+      
       Swal.fire({
         title: 'Success!',
         text: 'Movie submitted successfully!',
