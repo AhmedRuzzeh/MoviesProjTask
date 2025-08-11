@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 interface MovieFormData {
   originalTitle: string;
@@ -101,7 +102,13 @@ export class NewMovieComponent {
       const formData: MovieFormData = this.movieForm.value;
       console.log('Movie data:', formData);
       
-      alert('Movie submitted successfully!');
+      Swal.fire({
+        title: 'Success!',
+        text: 'Movie submitted successfully!',
+        icon: 'success',
+        timer: 3000,
+        showConfirmButton: false
+      });
     }
   }
 }
