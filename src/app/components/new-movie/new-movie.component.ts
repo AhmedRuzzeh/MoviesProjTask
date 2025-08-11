@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 interface MovieFormData {
   originalTitle: string;
   movieOverview: string;
   imdbId: string;
+}
+
+function mustBeNumber(control: AbstractControl) {
+  if (control.value === '' || !isNaN(Number(control.value))) { return null; }
+  return { notNumber: true };
 }
 
 @Component({
@@ -24,56 +29,26 @@ export class NewMovieComponent {
     this.movieForm = this.fb.group({
       originalTitle: ['', [Validators.required, Validators.minLength(1)]],
       movieOverview: ['', [Validators.required, Validators.minLength(10)]],
-      imdbId: ['', [Validators.pattern(/^tt\d{7,8}$/)]] // Optional IMDB ID pattern
+
+      adultMovie: ['no'],
+      video: ['no'],
+      tagline: [''],
+      runtime: ['', {validators: mustBeNumber}],
+      budget:  ['', {validators: mustBeNumber}],
+      revenue: ['', {validators: mustBeNumber}],
     });
   }
 
   get currentStepValid(): boolean {
     switch (this.currentStep) {
       case 1:
-        return this.movieForm.get('originalTitle')?.valid ?? false;
-      case 6:
-        return this.movieForm.get('movieOverview')?.valid ?? false;
-      case 7:
-        return this.movieForm.get('imdbId')?.valid ?? true; // Optional field
+        return (this.movieForm.get('originalTitle')?.valid && this.movieForm.get('movieOverview')?.valid) ?? false;
+      case 2:
+        return (this.movieForm.get('tagline')?.valid && this.movieForm.get('runtime')?.valid && this.movieForm.get('budget')?.valid && this.movieForm.get('revenue')?.valid) ?? false;
+      case 3:
+        return true;
       default:
         return false;
-    }
-  }
-
-  nextStep() {
-    if (this.currentStepValid) {
-      if (this.currentStep === 1) {
-        this.currentStep = 6;
-      } else if (this.currentStep === 6) {
-        this.currentStep = 7;
-      }
-    }
-  }
-
-  previousStep() {
-    if (this.currentStep === 6) {
-      this.currentStep = 1;
-    } else if (this.currentStep === 7) {
-      this.currentStep = 6;
-    }
-  }
-
-  onSubmit() {
-    if (this.movieForm.valid) {
-      const formData: MovieFormData = this.movieForm.value;
-      console.log('Movie data:', formData);
-      // Handle form submission here
-      alert('Movie submitted successfully!');
-    }
-  }
-
-  getStepTitle(step: number): string {
-    switch (step) {
-      case 1: return 'Movie Details';
-      case 6: return 'Additional Details';
-      case 7: return 'Verify & Save';
-      default: return '';
     }
   }
 
@@ -86,10 +61,47 @@ export class NewMovieComponent {
       if (field.errors['minlength']) {
         return `${fieldName} must be at least ${field.errors['minlength'].requiredLength} characters`;
       }
-      if (field.errors['pattern']) {
-        return 'IMDB ID must be in format tt1234567 or tt12345678';
+      if (field.errors['notNumber']) {
+        return `${fieldName} must be a number`;
       }
     }
     return '';
+  }
+
+  nextStep() {
+    if (this.currentStepValid) {
+      if (this.currentStep === 1) {
+        this.currentStep = 2;
+      } else if (this.currentStep === 2) {
+        this.currentStep = 3;
+      }
+    }
+  }
+
+  previousStep() {
+    if (this.currentStep === 2) {
+      this.currentStep = 1;
+    } else if (this.currentStep === 3) {
+      this.currentStep = 2;
+    }
+  }
+  
+  getStepTitle(step: number): string {
+    switch (step) {
+      case 1: return 'Movie Details';
+      case 2: return 'Additional Details';
+      case 3: return 'Verify & Save';
+      default: return '';
+    }
+  }
+  
+
+  onSubmit() {
+    if (this.movieForm.valid) {
+      const formData: MovieFormData = this.movieForm.value;
+      console.log('Movie data:', formData);
+      
+      alert('Movie submitted successfully!');
+    }
   }
 }

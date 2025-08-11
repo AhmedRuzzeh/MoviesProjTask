@@ -1,107 +1,251 @@
 <body>
-    <div class="container">
-        <div class="content">
-            <div class="header">
-                <img src="new-movie-logo.png" alt="themoviedb.org" routerLink="/" />
-            </div>
-            <div class="form-container">
-                <!-- Left sidebar with steps -->
-                <div class="sidebar">
-                    <ul class="step-navigation">
-                        <li class="step-item" [class.active]="currentStep === 1"
-                            [class.completed]="movieForm.get('originalTitle')?.valid && currentStep > 1">
-                            <span class="step-title">1. Getting Started</span>
-                        </li>
+  <div class="container">
+    <div class="content">
+      <div class="header">
+        <img src="new-movie-logo.png" alt="themoviedb.org" routerLink="/" />
+      </div>
+      <div class="form-container">
+        <!-- Left sidebar -->
+        <div class="sidebar">
+          <ul class="step-navigation">
+            <li
+              class="step-item"
+              [class.active]="currentStep === 1"
+              [class.completed]="
+                movieForm.get('originalTitle')?.valid && currentStep > 1
+              "
+            >
+              <span class="step-title">1. Getting Started</span>
+            </li>
 
-                        <li class="step-item" [class.active]="currentStep === 6"
-                            [class.completed]="movieForm.get('movieOverview')?.valid && currentStep > 6">
-                            <span class="step-title">2. Additional Details</span>
-                        </li>
+            <li
+              class="step-item"
+              [class.active]="currentStep === 2"
+              [class.completed]="
+                movieForm.get('movieOverview')?.valid && currentStep > 2
+              "
+            >
+              <span class="step-title">2. Additional Details</span>
+            </li>
 
-                        <li class="step-item" [class.active]="currentStep === 7"
-                            [class.completed]="movieForm.valid && currentStep > 7">
-                            <span class="step-title">3. Verify & Save</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Main form content -->
-                <div class="form-content">
-                    <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
-
-                        <!-- Step 1: Movie Details -->
-                        <div class="step-content" *ngIf="currentStep === 1">
-                            <div class="step-header">
-                                <h2>Movie Details</h2>
-                            </div>
-                            <div class="form-section">
-                                <div class="form-row">
-                                    <label for="originalTitle">
-                                        Original Title - <span class="required-text">Required</span>
-                                    </label>
-                                    <input type="text" id="originalTitle" formControlName="originalTitle"
-                                        [class.error]="movieForm.get('originalTitle')?.errors && movieForm.get('originalTitle')?.touched">
-                                    <div class="error-message" *ngIf="getFieldError('originalTitle')">
-                                        {{ getFieldError('originalTitle') }}
-                                    </div>
-
-                                    <label for="movieOverview">
-                                        Movie Overview (English) - <span class="required-text">Required (min 10 characters)</span>
-                                    </label>
-                                    <textarea id="movieOverview" formControlName="movieOverview" rows="6"
-                                        [class.error]="movieForm.get('movieOverview')?.errors && movieForm.get('movieOverview')?.touched">
-                                    </textarea>
-                                    <div class="error-message" *ngIf="getFieldError('movieOverview')">
-                                        {{ getFieldError('movieOverview') }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 2: Additional Details -->
-                        <div class="step-content" *ngIf="currentStep === 6">
-                            <div class="step-header">
-                                <h2>Additional Details</h2>
-                            </div>
-                            <div class="form-section">
-                                <div class="form-row">
-                                    
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 3: Verify & Save -->
-                        <div class="step-content" *ngIf="currentStep === 7">
-                            <div class="step-header">
-                                <h2>Verify & Save</h2>
-                            </div>
-                            <div class="form-section">
-                                
-                            </div>
-                        </div>
-
-                        <!-- Navigation buttons -->
-                        <div class="form-navigation">
-                            <button type="button" class="btn btn-secondary" *ngIf="currentStep > 1"
-                                (click)="previousStep()">
-                                Previous
-                            </button>
-
-                            <div class="nav-spacer"></div>
-
-                            <button type="button" class="btn btn-primary" *ngIf="currentStep < 7" (click)="nextStep()"
-                                [disabled]="!currentStepValid">
-                                Next
-                            </button>
-
-                            <button type="submit" class="btn btn-primary" *ngIf="currentStep === 7"
-                                [disabled]="!movieForm.valid">
-                                Save
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <li
+              class="step-item"
+              [class.active]="currentStep === 3"
+              [class.completed]="movieForm.valid && currentStep > 3"
+            >
+              <span class="step-title">3. Verify & Save</span>
+            </li>
+          </ul>
         </div>
+
+        <!-- Main form content -->
+        <div class="form-content">
+          <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+            <!-- Step 1: Movie Details -->
+            <div class="step-content" *ngIf="currentStep === 1">
+              <div class="step-header">
+                <h2>Movie Details</h2>
+              </div>
+              <div class="form-section">
+                <div class="form-row">
+                  <label for="originalTitle">
+                    Original Title - <span class="required-text">Required</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="originalTitle"
+                    formControlName="originalTitle"
+                    [class.error]="
+                      movieForm.get('originalTitle')?.errors &&
+                      movieForm.get('originalTitle')?.touched
+                    "
+                  />
+                  <div
+                    class="error-message"
+                    *ngIf="getFieldError('originalTitle')"
+                  >
+                    {{ getFieldError("originalTitle") }}
+                  </div>
+
+                  <label for="movieOverview">
+                    Movie Overview (English) -
+                    <span class="required-text"
+                      >Required (min 10 characters)</span
+                    >
+                  </label>
+                  <textarea
+                    id="movieOverview"
+                    formControlName="movieOverview"
+                    rows="6"
+                    [class.error]="
+                      movieForm.get('movieOverview')?.errors &&
+                      movieForm.get('movieOverview')?.touched
+                    "
+                  >
+                  </textarea>
+                  <div
+                    class="error-message"
+                    *ngIf="getFieldError('movieOverview')"
+                  >
+                    {{ getFieldError("movieOverview") }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Additional Details -->
+            <div class="step-content" *ngIf="currentStep === 2">
+              <div class="step-header">
+                <h2>Additional Details</h2>
+              </div>
+              <div class="form-section">
+                <div class="form-row">
+                  <label for="adultMovie"> Adult Movie? </label>
+                  <select
+                    id="adultMovie"
+                    formControlName="adultMovie"
+                    [class.error]="
+                      movieForm.get('adultMovie')?.errors &&
+                      movieForm.get('adultMovie')?.touched
+                    "
+                  >
+                    <option value="yes">Yes</option>
+                    <option value="no" selected>No</option>
+                  </select>
+                  <div
+                    class="error-message"
+                    *ngIf="getFieldError('adultMovie')"
+                  >
+                    {{ getFieldError("adultMovie") }}
+                  </div>
+
+                  <label for="video"> Video? </label>
+                  <select
+                    id="video"
+                    formControlName="video"
+                    [class.error]="
+                      movieForm.get('video')?.errors &&
+                      movieForm.get('video')?.touched
+                    "
+                  >
+                    <option value="yes">Yes</option>
+                    <option value="no" selected>No</option>
+                  </select>
+                  <div class="error-message" *ngIf="getFieldError('video')">
+                    {{ getFieldError("video") }}
+                  </div>
+
+                  <label for="tagline"> Tagline (English) </label>
+                  <input
+                    type="text"
+                    id="tagline"
+                    formControlName="tagline"
+                    [class.error]="
+                      movieForm.get('tagline')?.errors &&
+                      movieForm.get('tagline')?.touched
+                    "
+                  />
+                  <div class="error-message" *ngIf="getFieldError('tagline')">
+                    {{ getFieldError("tagline") }}
+                  </div>
+
+                  <label for="runtime"> Runtime (In Minutes) </label>
+                  <input
+                    type="text"
+                    id="runtime"
+                    formControlName="runtime"
+                    [class.error]="
+                      movieForm.get('runtime')?.errors &&
+                      movieForm.get('runtime')?.touched
+                    "
+                  />
+                  <div class="error-message" *ngIf="getFieldError('runtime')">
+                    {{ getFieldError("runtime") }}
+                  </div>
+
+                  <label for="budget"> Budget (In U.S. Dollars) </label>
+                  <input
+                    type="text"
+                    id="budget"
+                    formControlName="budget"
+                    [class.error]="
+                      movieForm.get('budget')?.errors &&
+                      movieForm.get('budget')?.touched
+                    "
+                  />
+                  <div class="error-message" *ngIf="getFieldError('budget')">
+                    {{ getFieldError("budget") }}
+                  </div>
+
+                  <label for="revenue"> Revenue (In U.S. Dollars) </label>
+                  <input
+                    type="text"
+                    id="revenue"
+                    formControlName="revenue"
+                    [class.error]="
+                      movieForm.get('revenue')?.errors &&
+                      movieForm.get('revenue')?.touched
+                    "
+                  />
+                  <div class="error-message" *ngIf="getFieldError('revenue')">
+                    {{ getFieldError("revenue") }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Verify & Save -->
+            <div class="step-content" *ngIf="currentStep === 3">
+              <div class="step-header">
+                <h2>Verify & Save</h2>
+              </div>
+              <div class="form-section">
+                <h3>Original Title: <span>{{ movieForm.get('originalTitle')?.value }}</span></h3>
+                <h3>Movie Overview: <span>{{ movieForm.get('movieOverview')?.value }}</span></h3>
+                <h3>Adult Movie:    <span>{{ movieForm.get('adultMovie')?.value }}</span></h3>
+                <h3>Video:          <span>{{ movieForm.get('video')?.value }}</span></h3>
+                <h3>Tagline:        <span>{{ movieForm.get('tagline')?.value }}</span></h3>
+                <h3>Runtime:        <span>{{ movieForm.get('runtime')?.value }}</span></h3>
+                <h3>Budget:         <span>{{ movieForm.get('budget')?.value }}</span></h3>
+                <h3>Revenue:        <span>{{ movieForm.get('revenue')?.value }}</span></h3>
+              </div>
+            </div>
+
+            <!-- Navigation buttons -->
+            <div class="form-navigation">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                *ngIf="currentStep > 1"
+                (click)="previousStep()"
+              >
+                Previous
+              </button>
+
+              <div class="nav-spacer"></div>
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                *ngIf="currentStep < 3"
+                (click)="nextStep()"
+                [disabled]="!currentStepValid"
+              >
+                Next
+              </button>
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                *ngIf="currentStep === 3"
+                [disabled]="!movieForm.valid"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </body>
