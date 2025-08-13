@@ -1,29 +1,58 @@
-# EssentialsPractice
+# 🎬 TMDB Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.0-next.2.
+A simple Angular-based web application inspired by [The Movie Database (TMDB)](https://www.themoviedb.org/) website.  
+It allows users to **search** for movies and TV shows, **filter** results, and view detailed information — all powered by the TMDB API.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## ✨ Features
+- 🔍 **Search** movies and TV shows by title
+- 🎯 **Filter** results based on criteria (e.g., genres, popularity)
+- 📄 **Details page** for movies and TV shows with title, release date, description, and poster
+- 🌐 Live data from the TMDB API
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🛠️ Tech Stack
+- **Frontend:** Angular
+- **API:** TMDB API
+- **Backend:** None (fully client-side)
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 📦 Installation & Setup
 
-## Running unit tests
+### 1️⃣ Prerequisites
+- Node.js (LTS version recommended)
+- Angular CLI installed globally:
+npm install -g @angular/cli
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+### 2️⃣ Clone the repository
+git clone https://github.com/AhmedRuzzeh/TMDB-Project.git  
+cd TMDB-Project
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+### 3️⃣ Install dependencies
+npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
 
-## HELLO 
+### 4️⃣ Get your TMDB API key
+- Create a free account on TMDB  
+- Go to Settings → API → Create API Key  
+- Copy the key and add it to your environment configuration (src/environments/environment.ts):
+
+export const environment = {  
+  production: false,  
+  apiKey: 'YOUR_TMDB_API_KEY'  
+};
+
+---
+
+### 5️⃣ Run the app
+ng serve
+
+The app will be running at: http://localhost:4200/
